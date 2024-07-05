@@ -7,6 +7,7 @@ Make sure the Google Chrome browser and Chromedriver are the same version.
 Before running the Python program, please update the chromedriver path in the Python file. Make sure that you have provided the permissions for Chromedriver.
 
 ##**Usage**
+
 ![image](https://github.com/1h3ll/xss_checker/assets/93440634/8af06e2b-a087-48a5-9f75-722c0494f923)
 
 python3 python.py --url "http://testphp.vulnweb.com/hpp/params.php?p=PAYLOAD" --file payload.txt
