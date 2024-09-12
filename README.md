@@ -26,7 +26,7 @@ Selenium (pip install selenium)
 
 Google Chrome installed
 
-Chrome WebDriver:https://googlechromelabs.github.io/chrome-for-testing/ (download matching version for your Chrome browser from here and place it in the project directory)
+Chrome WebDriver:[Here](https://googlechromelabs.github.io/chrome-for-testing/) (download matching version for your Chrome browser from here and place it in the project directory)
 
 
 **Usage**
