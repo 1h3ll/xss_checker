@@ -1,31 +1,57 @@
-##**XSS Checker**
+##XSS Payload Testing Tool
+This is an automated XSS (Cross-Site Scripting) payload testing tool built with Python and Selenium. It is designed to test web applications by injecting a variety of XSS payloads into URLs and monitoring for alert pop-ups to detect potential vulnerabilities.
 
-Xss checker is a basic xss checking tool. It uses list of payloads which are saved in the payload.txt and inject those payloads in the URL. 
+##Features
+Payload Injection: The tool automatically injects payloads into different parts of the URL (path segments, parameters, and fragments).
+Headless Testing: It uses Selenium with Chrome in headless mode to simulate a browser and execute tests without launching a visible window.
+Multi-Payload Support: The tool supports multiple payloads that can be injected into multiple URLs.
+Error Handling: Handles alerts, timeouts, and web driver exceptions smoothly.
+Threaded Execution: Allows testing of multiple URLs and payloads simultaneously with multi-threading to speed up the process.
+PAYLOAD Placeholder: You can specify URLs with a PAYLOAD placeholder, and the tool will replace the PAYLOAD with the actual XSS payloads during testing.
 
-##**Requirements**
+##Requirements
+Python 3.x
+Selenium (pip install selenium)
+Google Chrome installed
+Chrome WebDriver:https://googlechromelabs.github.io/chrome-for-testing/ (download matching version for your Chrome browser from here and place it in the project directory)
 
-It needs the Google Chrome browser installed and the exact same version of Chromedriver (https://googlechromelabs.github.io/chrome-for-testing/). Download the chromedriver and unzip it.
-Make sure the Google Chrome browser and Chromedriver are the same version.
-Before running the Python program, please update the chromedriver path in the Python file. Make sure that you have provided the permissions for Chromedriver.
+##Usage
+Command Line Options:
+--url: Specify a single URL or a file containing a list of URLs (one per line).
+--payload: Specify a file containing XSS payloads (one per line).
+--thread: (Optional) Number of concurrent threads to use for testing (default is 10, max is 20).
 
-##**Usage**
+##PAYLOAD Placeholder Functionality
+In URLs, the string PAYLOAD can be used as a placeholder for where the tool will inject the actual XSS payloads. For example:
+URL: https://example.com/page?param=PAYLOAD
+Payload: <script>alert('XSS')</script>
+The tool will replace the PAYLOAD in the URL with the payload, resulting in:
 
-![image](https://github.com/1h3ll/xss_checker/assets/93440634/8af06e2b-a087-48a5-9f75-722c0494f923)
+##Example:
+To test a single URL with a file of payloads:
+`python3 xss_tool.py --url "https://example.com/page?param=PAYLOAD" --payload payloads.txt`
 
-python3 python.py --url "http://testphp.vulnweb.com/hpp/params.php?p=PAYLOAD" --file payload.txt
+To test multiple URLs from a file:
+`python3 xss_tool.py --url urls.txt --payload payloads.txt`
 
-Keyword **PAYLOAD** in the URL, where the payload have to be injected, --file /path/to/payload_file
+##Injecting Payloads into URL Segments
+The tool automatically injects payloads into different parts of the URL:
 
-##**Output Example**
+Path Segments: It inserts payloads into the different path segments of the URL.
+Query Parameters: Payloads are injected into parameters that appear in the query string (?param=value).
+Fragments: Payloads are added after the # fragment in the URL if present.
+Multi-Threading
+To speed up the process, you can specify the number of concurrent threads to be used for testing. By default, the tool runs with 10 threads, but this can be modified using the --thread argument.
 
-![image](https://github.com/1h3ll/xss_checker/assets/93440634/4a25fdfd-4449-423f-942f-4f432720c71b)
-!!Payload executed
+Example of setting the number of threads to 15:
+`python3 xss_tool.py --url urls.txt --payload payloads.txt --thread 15`
 
-![image](https://github.com/1h3ll/xss_checker/assets/93440634/cac9fa11-a6a2-43a4-8230-dc8b184dce4e)
-!!No pop-up
+##Output
+The tool provides colored output to distinguish between successful and failed tests:
 
-##**NOTE**
+Green Output: Indicates that an alert was found (potential XSS vulnerability).
+Red Output: Indicates a timeout or failure (no XSS vulnerability detected).
 
-The script doesn't give me any false positive. But there were some true negatives, Checking them manually will be Good.
+Thanks for https://ibrahimxss.store for given me this idea.
 
-##**HAPPY HUNTING**
+##Happy Hunting
