@@ -50,6 +50,8 @@ Payload: <script>alert('XSS')</script>
 
 The tool will replace the PAYLOAD in the URL with the payload, resulting in:
 
+`https://example.com/page?param=<script>alert('XSS')</script>`
+
 Example:
 
 To test a single URL with a file of payloads:
