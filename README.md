@@ -1,4 +1,5 @@
 **XSS Payload Testing Tool**
+
 This is an automated XSS (Cross-Site Scripting) payload testing tool built with Python and Selenium. It is designed to test web applications by injecting a variety of XSS payloads into URLs and monitoring for alert pop-ups to detect potential vulnerabilities.
 
 **Features**
