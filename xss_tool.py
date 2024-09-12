@@ -139,7 +139,7 @@ def main():
     parser = argparse.ArgumentParser(description='Test XSS payloads.')
     parser.add_argument('--url', required=True, help='Single URL or path to a file containing URLs')
     parser.add_argument('--payload', required=True, help='Path to the payload file')
-    parser.add_argument('--thread', type=int, default=19, help='Number of threads to use (default is 10)')
+    parser.add_argument('--thread', type=int, default=10, help='Number of threads to use (default is 10)')
     args = parser.parse_args()
 
     urls = load_urls(args.url)
