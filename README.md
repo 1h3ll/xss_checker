@@ -94,7 +94,7 @@ Red Output: Indicates a timeout or failure (no XSS vulnerability detected).
 
 
 
-**Thanks for https://ibrahimxss.store for given me this idea.**
+**Thanks for [IbrahimXSS](https://ibrahimxss.store) for given me this idea.**
 
 
 
