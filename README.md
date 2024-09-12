@@ -99,3 +99,7 @@ Red Output: Indicates a timeout or failure (no XSS vulnerability detected).
 
 
 ##Happy Hunting
+
+
+Buy Me a coffee: 
+Paypal: navaneethan1@proton.me
