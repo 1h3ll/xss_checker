@@ -44,7 +44,7 @@ Command Line Options:
 
 In URLs, the string PAYLOAD can be used as a placeholder for where the tool will inject the actual XSS payloads. For example:
 
-URL: https://example.com/page?param=PAYLOAD
+URL:`https://example.com/page?param=PAYLOAD`
 
 Payload: <script>alert('XSS')</script>
 
@@ -94,8 +94,10 @@ Red Output: Indicates a timeout or failure (no XSS vulnerability detected).
 
 
 
-**Thanks for [IbrahimXSS](https://ibrahimxss.store) for given me this idea.**
+**Special mention: [IbrahimXSS](https://ibrahimxss.store)**
 
+
+**Thanks for people those who shared XSS payload publically on LinkedIn and Medium**
 
 
 **Happy Hunting**
