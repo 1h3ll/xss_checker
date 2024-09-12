@@ -98,7 +98,8 @@ Red Output: Indicates a timeout or failure (no XSS vulnerability detected).
 
 
 
-##Happy Hunting
+**Happy Hunting**
+
 
 
 Buy Me a coffee: 
