@@ -117,7 +117,7 @@ def attack(test_url):
     driver = setup_browser()
     try:
         driver.get(test_url)
-        WebDriverWait(driver, 5).until(EC.alert_is_present())  # Wait for up to 5 seconds
+        WebDriverWait(driver, 10).until(EC.alert_is_present())  # Wait for up to 10 seconds
         alert = driver.switch_to.alert
         alert.accept()  # Close the alert
         print(Fore.GREEN + f"Alert Found: {test_url}")
