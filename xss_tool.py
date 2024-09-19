@@ -8,9 +8,7 @@ from colorama import init, Fore, Style
 import os
 import re
 import argparse
-import sys
 import concurrent.futures
-
 
 # Initialize colorama
 init(autoreset=True)
@@ -36,7 +34,7 @@ def load_payloads(payload_file):
         payloads = [line.strip() for line in file.readlines() if line.strip()]
     return payloads
 
-def inject_payload(url, payload):
+def inject_payload(url, payload, inject_into_paths=False):
     injected_urls = []
 
     # Ensure payload is not injected into the protocol part (http:// or https://)
@@ -50,6 +48,7 @@ def inject_payload(url, payload):
         base_url = url
         protocol = ""
 
+    # Handle cases where PAYLOAD is in the URL
     if 'PAYLOAD' in base_url:
         injected_urls.append(protocol + base_url.replace("PAYLOAD", payload))
         return injected_urls
@@ -59,10 +58,20 @@ def inject_payload(url, payload):
     if not domain:
         return injected_urls
 
-    # Inject into each path segment
-    for i in range(1, len(path_segments) + 1):
-        new_segments = path_segments[:i] + [payload] + path_segments[i:]
-        injected_urls.append(protocol + domain + '/' + '/'.join(new_segments))
+    # Inject into each path segment if --path is specified
+    if inject_into_paths:
+        for i in range(1, len(path_segments) + 1):
+            new_segments = path_segments[:i] + [payload] + path_segments[i:]
+            injected_urls.append(protocol + domain + '/' + '/'.join(new_segments))
+
+        # Inject into file extensions if --path is specified
+        for i in range(len(path_segments)):
+            if '.' in path_segments[i]:
+                parts = path_segments[i].rsplit('.', 1)
+                parts[0] += payload
+                new_segment = '.'.join(parts)
+                new_segments = path_segments[:i] + [new_segment] + path_segments[i + 1:]
+                injected_urls.append(protocol + domain + '/' + '/'.join(new_segments))
 
     # Handle query parameters if present
     if '?' in base_url:
@@ -85,34 +94,24 @@ def inject_payload(url, payload):
                 # No valid parameter, add URL as is
                 continue
 
-    # Add the payload as a fragment identifier
-    injected_urls.append(f"{protocol}{base_url}#{payload}")
-
-    # Inject into file extensions
-    for i in range(len(path_segments)):
-        if '.' in path_segments[i]:
-            parts = path_segments[i].rsplit('.', 1)
-            parts[0] += payload
-            new_segment = '.'.join(parts)
-            new_segments = path_segments[:i] + [new_segment] + path_segments[i + 1:]
-            injected_urls.append(protocol + domain + '/' + '/'.join(new_segments))
+    # Add the payload as a fragment identifier if --path is specified
+    if inject_into_paths:
+        injected_urls.append(f"{protocol}{base_url}#{payload}")
 
     return injected_urls
 
-def test_payloads(urls, payloads):
-    url_payload=[]
+def test_payloads(urls, payloads, inject_into_paths=False):
+    url_payload = []
     for url in urls:
         for payload in payloads:
             payload = payload.strip()
-            # url_payload.append(inject_payload(url, payload))
-            injected_payload = inject_payload(url, payload)
-            if isinstance(injected_payload,list):
+            injected_payload = inject_payload(url, payload, inject_into_paths)
+            if isinstance(injected_payload, list):
                 url_payload.extend(injected_payload)
             else:
                 url_payload.append(injected_payload)
     return url_payload
 
-    
 def attack(test_url):
     driver = setup_browser()
     try:
@@ -139,12 +138,13 @@ def main():
     parser = argparse.ArgumentParser(description='Test XSS payloads.')
     parser.add_argument('--url', required=True, help='Single URL or path to a file containing URLs')
     parser.add_argument('--payload', required=True, help='Path to the payload file')
+    parser.add_argument('--path', action='store_true', help='Inject into paths, fragments, and file extensions')
     parser.add_argument('--thread', type=int, default=10, help='Number of threads to use (default is 10)')
     args = parser.parse_args()
 
     urls = load_urls(args.url)
     payloads = load_payloads(args.payload)
-    
+
     # Count URLs with parameters
     url_count = len(urls)
     payload_count = len(payloads)
@@ -154,7 +154,7 @@ def main():
     print(f"{Fore.YELLOW}Number of payloads: {payload_count}")
 
     # Run payload testing
-    injected_payloads = test_payloads(urls, payloads)
+    injected_payloads = test_payloads(urls, payloads, inject_into_paths=args.path)
     
     # Use thread argument or default to 10
     thread_count = args.thread
