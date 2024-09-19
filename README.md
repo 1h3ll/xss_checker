@@ -39,6 +39,8 @@ Command Line Options:
 
 --thread: (Optional) Number of concurrent threads to use for testing (default is 10, max is 20).
 
+--path: (Optional) Inject payloads into paths, query parameters, file extensions, and fragments. If not specified, payloads are only injected into query parameters.
+
 
 **PAYLOAD Placeholder Functionality**
 
