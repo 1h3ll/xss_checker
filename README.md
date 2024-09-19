@@ -81,6 +81,10 @@ Multi-Threading
 To speed up the process, you can specify the number of concurrent threads to be used for testing. By default, the tool runs with 10 threads, but this can be modified using the --thread argument.
 
 
+--path argument:
+
+Inject payloads into paths, query parameters, file extensions, and fragments. If not specified, payloads are only injected into query parameters.
+
 Example of setting the number of threads to 15:
 
 `python3 xss_tool.py --url urls.txt --payload payloads.txt --thread 15`
