@@ -16,7 +16,7 @@ init(autoreset=True)
 def setup_browser():
     chrome_options = Options()
     chrome_options.add_argument("--headless")  # Optional: Run in headless mode
-    service = Service('./chromedriver')  # Update this path
+    service = Service('./chromedriver')  # Update this path if necessary
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
@@ -50,10 +50,11 @@ def inject_payload(url, payload, inject_into_paths=False):
 
     # Handle cases where PAYLOAD is in the URL
     if 'PAYLOAD' in base_url:
+        # Replace only the 'PAYLOAD' part with the actual payload
         injected_urls.append(protocol + base_url.replace("PAYLOAD", payload))
-        return injected_urls
+        return injected_urls  # Only inject into the 'PAYLOAD' placeholder and return
 
-    # Avoid injecting payloads into the domain part
+    # Continue with normal injection logic if '--path' is provided
     domain, *path_segments = base_url.split('/')
     if not domain:
         return injected_urls
@@ -116,7 +117,7 @@ def attack(test_url):
     driver = setup_browser()
     try:
         driver.get(test_url)
-        WebDriverWait(driver, 10).until(EC.alert_is_present())  # Wait for up to 10 seconds
+        WebDriverWait(driver, 20).until(EC.alert_is_present())  # Timeout to 20 seconds
         alert = driver.switch_to.alert
         alert.accept()  # Close the alert
         print(Fore.GREEN + f"Alert Found: {test_url}")
@@ -124,11 +125,15 @@ def attack(test_url):
         print(Fore.RED + f"Timed out: {test_url}")
     except NoAlertPresentException:
         print(Fore.YELLOW + f"No alert: {test_url}")
+    except WebDriverException as e:
+        # Handle specific errors like DNS resolution failures
+        if "ERR_NAME_NOT_RESOLVED" in str(e):
+            print(Fore.RED + f"DNS resolution failed for: {test_url}")
+        else:
+            print(Fore.RED + f"WebDriverException occurred: {str(e)}")
+            print(Fore.RED + f"Timed out: {test_url}")
     except UnexpectedAlertPresentException:
         print(Fore.RED + "Unexpected alert encountered during execution.")
-    except WebDriverException as e:
-        print(Fore.RED + f"WebDriverException occurred: {str(e)}")
-        print(Fore.RED + f"Timed out: {test_url}")
     except Exception as e:
         print(e)
     finally:
@@ -152,6 +157,7 @@ def main():
     # Display the count before starting
     print(f"{Fore.YELLOW}Number of URLs: {url_count}")
     print(f"{Fore.YELLOW}Number of payloads: {payload_count}")
+    print("Please give me atleast 30 sec....")
 
     # Run payload testing
     injected_payloads = test_payloads(urls, payloads, inject_into_paths=args.path)
