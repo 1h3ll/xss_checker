@@ -1,120 +1,133 @@
-**XSS Payload Testing Tool**
+# XSS Hunter Pro
 
-This is an automated XSS (Cross-Site Scripting) payload testing tool built with Python and Selenium. It is designed to test web applications by injecting a variety of XSS payloads into URLs and monitoring for alert pop-ups to detect potential vulnerabilities.
+**Advanced Web Vulnerability Scanner (XSS-focused)**
 
+A lightweight, Selenium-backed XSS testing utility that injects payloads into query parameters, path segments and fragments (optionally), validates the result using a real browser (Chrome via Chromedriver), and can send Telegram alerts when an alert() popup is triggered.
 
-**Features**
+> ⚠️ **IMPORTANT — Legal & Ethical Notice**
+>
+> This tool is intended for use on systems you own or have explicit permission to test. Unauthorized scanning or exploitation of websites is illegal and unethical. Always obtain written permission before testing third-party systems.
 
-Payload Injection: The tool automatically injects payloads into different parts of the URL (path segments, parameters, and fragments).
+---
 
-Headless Testing: It uses Selenium with Chrome in headless mode to simulate a browser and execute tests without launching a visible window.
+## Features
 
-Multi-Payload Support: The tool supports multiple payloads that can be injected into multiple URLs.
+* `PAYLOAD` placeholder substitution in target URLs
+* Parameter injection (query string)
+* Optional path / fragment injection (`--path`)
+* Real browser validation using Selenium + ChromeDriver (headless by default)
+* Optional Telegram alerting for confirmed XSS with basic URL encoding
+* Multi-threaded scanning using Python `concurrent.futures`
+* Pretty console output with `rich` and colored status via `colorama`
 
-Error Handling: Handles alerts, timeouts, and web driver exceptions smoothly.
+---
 
-Threaded Execution: Allows testing of multiple URLs and payloads simultaneously with multi-threading to speed up the process.
+## Requirements
 
-PAYLOAD Placeholder: You can specify URLs with a PAYLOAD placeholder, and the tool will replace the PAYLOAD with the actual XSS payloads during testing.
+* Python 3.8+
+* Google Chrome (matching your Chromedriver version)
+* Chromedriver (binary accessible by the script)
 
+Python packages (install via pip):
 
-**Requirements**
+```bash
+pip install selenium requests colorama rich
+```
 
-Python 3.x
+---
 
-Selenium (pip install selenium)
+## Files
 
-Google Chrome installed
+* `xss_hunter_pro.py` — main scanner script (the code you provided)
+* `payloads.txt` — newline-delimited list of XSS payloads (example below)
+* `targets.txt` — optional, newline-delimited list of target URLs. URLs may contain the literal `PAYLOAD` placeholder.
 
-Chrome WebDriver:[Here](https://googlechromelabs.github.io/chrome-for-testing/) (download matching version for your Chrome browser from here and place it in the project directory)
+---
 
+## Example payloads (`payloads.txt`)
 
-**Usage**
+```"><script>alert(1)</script>
+'";alert(1);//
+"><img src=x onerror=alert(1)>
+<script>confirm(1)</script>
+```
 
-Command Line Options:
+(Use a curated list appropriate to your targets.)
 
---url: Specify a single URL or a file containing a list of URLs (one per line).
+---
 
---payload: Specify a file containing XSS payloads (one per line).
+## Usage
 
---thread: (Optional) Number of concurrent threads to use for testing (default is 10, max is 20).
+Basic usage (single URL):
 
---path: (Optional) Inject payloads into paths, query parameters, file extensions, and fragments. If not specified, payloads are only injected into query parameters.
+```bash
+python xss_hunter_pro.py --url "https://example.com/search?q=PAYLOAD" --payload payloads.txt
+```
 
+Using a file with multiple targets:
 
-**PAYLOAD Placeholder Functionality**
+```bash
+python xss_hunter_pro.py --url targets.txt --payload payloads.txt
+```
 
-In URLs, the string PAYLOAD can be used as a placeholder for where the tool will inject the actual XSS payloads. For example:
+Enable path / fragment injection (when `PAYLOAD` placeholder is not present):
 
-URL:`https://example.com/page?param=PAYLOAD`
+```bash
+python xss_hunter_pro.py --url targets.txt --payload payloads.txt --path
+```
 
-Payload: <script>alert('XSS')</script>
+Change number of concurrent threads (default 10):
 
-The tool will replace the PAYLOAD in the URL with the payload, resulting in:
+```bash
+python xss_hunter_pro.py --url targets.txt --payload payloads.txt --thread 20
+```
 
-`https://example.com/page?param=<script>alert('XSS')</script>`
+---
 
-Example:
+## Configuration & Notes
 
-To test a single URL with a file of payloads:
+* **Chromedriver path**: The script uses `Service('./chromedriver')` by default. Either place the `chromedriver` binary in the same folder, or modify the `Service()` path in `setup_browser()` to point to the binary location on your machine.
 
-`python3 xss_tool.py --url "https://example.com/page?param=PAYLOAD" --payload payloads.txt`
+* **Headless toggle**: The script configures Chrome to run headless. If you want to debug visually, remove or comment out `chrome_options.add_argument("--headless")` in `setup_browser()`.
 
+* **Timeouts**: HTTP requests use a short timeout (`requests.get(..., timeout=5)`) and Selenium waits for an alert with 5 seconds. Increase these values if you target slow hosts or complex pages.
 
+* **Telegram**: Replace `your_telegram_BOT_ID` and `your_CHAT_ID` in the script with your bot token and chat id to enable notifications. The script encodes some characters for URL-safe Telegram messages but keep in mind very long URLs or special characters may still need `urllib.parse.quote_plus()` for robust encoding.
 
-To test multiple URLs from a file:
+* **Resource usage**: Running many concurrent Selenium-driven browser instances is resource-heavy. Consider lowering `--thread` or using a single driver cycle per thread if system memory/CPU is limited.
 
-`python3 xss_tool.py --url urls.txt --payload payloads.txt`
+---
 
+## Suggested Improvements (optional)
 
-**Injecting Payloads into URL Segments**
+* Add randomized `User-Agent` strings and request headers for HTTP request pre-checks.
+* Reuse browser instances per thread (pool of drivers) rather than creating a new Chrome process for every test case to reduce overhead.
+* Add more robust Telegram encoding using `urllib.parse.quote_plus()` and send additional context (payload, param name, snapshot link).
+* Add logging to a file (CSV/JSON) with discovered issues, timestamps, and response snapshots.
+* Provide an option to take screenshots of successful pages for manual triage.
+* Add integration with Burp/OWASP ZAP for deeper analysis.
 
+---
 
-The tool automatically injects payloads into different parts of the URL:
+## Example quick checklist before scanning
 
-Path Segments: It inserts payloads into the different path segments of the URL.
+1. Confirm you have explicit permission to test the targets.
+2. Ensure Chromedriver version matches your installed Chrome browser.
+3. Test a single URL locally to confirm Selenium and Chromedriver are working.
+4. Adjust timeouts and thread count to match target performance and your machine capacity.
 
-Query Parameters: Payloads are injected into parameters that appear in the query string (?param=value).
+---
 
-Fragments: Payloads are added after the # fragment in the URL if present.
+## Contribution & License
 
-Multi-Threading
+Feel free to fork and improve this repo. Add an appropriate OSS license (MIT/Apache-2.0) depending on how you want to distribute it.
 
-To speed up the process, you can specify the number of concurrent threads to be used for testing. By default, the tool runs with 10 threads, but this can be modified using the --thread argument.
+---
 
-Example of setting the number of threads to 15:
+If you'd like, I can also:
 
-`python3 xss_tool.py --url urls.txt --payload payloads.txt --thread 15`
+* Generate a `requirements.txt` for you
+* Produce a sample `payloads.txt` with a curated list
+* Convert the script into a more efficient worker-pool that reuses browser instances
 
-
---path argument:
-
-Inject payloads into paths, query parameters, file extensions, and fragments. If not specified, payloads are only injected into query parameters.
-
-Example of setting path:
-
-`python3 xss_tool.py --url urls.txt --payload payloads.txt --path`
-
-
-**Output**
-
-The tool provides colored output to distinguish between successful and failed tests:
-
-Green Output: Indicates that an alert was found (potential XSS vulnerability).
-
-Red Output: Indicates a timeout or failure (no XSS vulnerability detected).
-
-
-
-**Special mention: [IbrahimXSS](https://ibrahimxss.store)**
-
-
-**Thanks for people those who shared XSS payload publically on LinkedIn and Medium**
-
-
-**Happy Hunting**
-
-
-
-Buy Me a coffee: 
-Paypal: navaneethan1@proton.me
+Tell me which of these you want next and I will prepare it.
